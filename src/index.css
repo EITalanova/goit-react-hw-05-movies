@@ -13,3 +13,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  /* display: block; */
+  /* max-width: 100%; */
+  height: auto;
+}
+
+.container-styles {
+  padding-bottom: 94px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.list-no-markers {
+  list-style-type: none;
+}
+
+.active {
+  color: blue;
+  text-decoration: underline;
+}

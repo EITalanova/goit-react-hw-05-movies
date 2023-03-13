@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation, Link } from 'react-router-dom';
 import { getSearchMovie } from 'servises/movie-api';
 
+import style from './Movies.module.css';
+
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -41,9 +43,10 @@ const Movies = () => {
   }, [movieName]);
 
   return (
-    <div>
+    <div className={style.section}>
       <form onSubmit={handleSubmit}>
         <input
+          className={style.input}
           type="text"
           name="movie"
           placeholder="Enter the movie..."
@@ -51,7 +54,13 @@ const Movies = () => {
           color="secondary"
           defaultValue={movieName}
         />
-        <button type="submit" variant="outlined" color="secondary" size="small">
+        <button
+          className={style.btn}
+          type="submit"
+          variant="outlined"
+          color="secondary"
+          size="small"
+        >
           Search
         </button>
       </form>
@@ -60,7 +69,7 @@ const Movies = () => {
         {movieName && (
           <ul>
             {movies.map(({ id, title, name }) => (
-              <li key={id}>
+              <li className={style.item} key={id}>
                 <Link to={`${id}`} state={{ from: fullPath }}>
                   {title || name}
                 </Link>
@@ -68,6 +77,7 @@ const Movies = () => {
             ))}
           </ul>
         )}
+        {!movies.length && movieName && <div>Nothing found!</div>}
       </>
     </div>
   );

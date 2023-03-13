@@ -25,7 +25,9 @@ const Cast = () => {
   }, [movieId]);
 
   if (!cast) {
-    return;
+    return (
+      <p>There is no information about the cast of this film yet. Sorry...</p>
+    );
   }
 
   return (
@@ -38,16 +40,15 @@ const Cast = () => {
             const imageSRC = profile_path ? IMAGEURL + profile_path : '---';
             return (
               <li key={id}>
-                <img src={imageSRC} alt="foto" width={200} height={300} />
+                <img src={imageSRC} alt="foto" width={100} height={200} />
                 <p>{name}</p>
-                <p>Character: {character}</p>
+                <p>
+                  <b> Character:</b> {character}
+                </p>
               </li>
             );
           })}
         </ul>
-      )}
-      {!cast.length && (
-        <p>There is no information about the cast of this film yet. Sorry...</p>
       )}
     </div>
   );

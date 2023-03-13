@@ -1,0 +1,24 @@
+.section {
+  padding: 15px;
+}
+
+.input {
+  padding: 5px;
+  border-color: skyblue;
+  margin-right: 15px;
+  border-radius: 10px;
+  width: 300px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  padding: 5px 20px;
+  border-color: skyblue;
+  background-color: skyblue;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.item {
+  margin-bottom: 4px;
+}

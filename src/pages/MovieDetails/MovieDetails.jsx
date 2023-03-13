@@ -4,10 +4,13 @@ import {
   useParams,
   useLocation,
   useNavigate,
+  NavLink,
   Link,
 } from 'react-router-dom';
 
 import { getMovieDetails } from 'servises/movie-api';
+
+import style from './MovieDetails.module.css';
 
 const IMAGEURL = 'https://image.tmdb.org/t/p/w500/';
 
@@ -27,7 +30,7 @@ const MovieDetails = () => {
       } catch (error) {
         console.log(error);
       } finally {
-          setIsLoading(false);
+        setIsLoading(false);
       }
     };
     fetchData();
@@ -36,7 +39,7 @@ const MovieDetails = () => {
   const handleGoBackBtn = () => {
     navigate(location.state.from);
   };
-    
+
   if (!movie) {
     return;
   }
@@ -49,26 +52,32 @@ const MovieDetails = () => {
 
   return (
     <>
-      <section>
+      <section className={style.container}>
         {location.state?.from && (
-          <button onClick={handleGoBackBtn}>
+          <button className={style.btn} onClick={handleGoBackBtn}>
             <span>Go back</span>
           </button>
         )}
         {isLoading ? (
-          <div>Loading...</div>
+          <div className={style.img}>Loading...</div>
         ) : (
-          <Link>
+          <Link className={style.box}>
             <div>
-              <img src={`${imageSRC}`} alt={title} />
+              <img src={`${imageSRC}`} alt={title} width={300} height={200} />
             </div>
 
-            <div>
-              <h2>
+            <div className={style.description}>
+              <h2 className={style.title}>
                 {title} {releaseDate && `(${releaseDate})`}
               </h2>
               <ul>
-                <li>{userScore > 0 && <p>User score: {userScore}%</p>}</li>
+                <li>
+                  {userScore > 0 && (
+                    <p>
+                      <b>User score:</b> {userScore}%
+                    </p>
+                  )}
+                </li>
                 <li>
                   <b>Overwiew</b>
                   <p>{overview}</p>
@@ -82,19 +91,19 @@ const MovieDetails = () => {
           </Link>
         )}
       </section>
-      <div>
-        <h3>Additional information</h3>
+      <div className={style.container}>
+        <h3 className={style.title}>Additional information</h3>
         <div>
           <ul>
-            <li>
-              <Link to="cast" state={location.state}>
+            <li className={style.item}>
+              <NavLink to="cast" state={location.state}>
                 Cast
-              </Link>
+              </NavLink>
             </li>
-            <li>
-              <Link to="rewiews" state={location.state}>
-                Rewiews
-              </Link>
+            <li className={style.item}>
+              <NavLink to="reviews" state={location.state}>
+                Reviews
+              </NavLink>
             </li>
           </ul>
         </div>

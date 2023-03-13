@@ -1,2 +1,30 @@
+.btn {
+  padding: 5px 20px;
+  border-color: skyblue;
+  background-color: skyblue;
+  color: #fff;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
 
+.container {
+  /* display: flex; */
+  padding: 15px;
+}
 
+.box {
+  display: flex;
+}
+
+.description,
+.img {
+  padding: 15px;
+}
+.text {
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.title {
+  margin-bottom: 10px;
+}
